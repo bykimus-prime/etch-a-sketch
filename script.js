@@ -8,8 +8,10 @@ function makeRows(rows, columns) {
     console.log(columns);
     for (i = 0; i < (rows * columns); i++) {
         let square = document.createElement('div');
-        square.innerText = (i + 1); // labels the squares
         containerDiv.appendChild(square).className = 'grid-item';
+        square.addEventListener('mouseover', () => {
+            square.style.backgroundColor = 'black';
+        })
     }
 }
 
