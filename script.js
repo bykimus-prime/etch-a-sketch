@@ -19,7 +19,21 @@ function makeGrid(rows, columns) {
     }
 }
 
-makeGrid(16, 16);
+const resetGridBtn = document.querySelector('#resetGridBtn');
+
+resetGridBtn.addEventListener('click', () => resetGrid());
+
+function resetGrid() {
+    document.querySelectorAll('.grid-item').forEach(e => e.remove());
+    let userInput = prompt('Please enter the number of grid squares per side (max: 100, it will be a square): ');
+    if (userInput > 100) {
+        alert('ERROR! You specified a grid size larger than the max of 100.');
+        return;
+    }
+    rows = userInput;
+    columns = userInput;
+    makeGrid(rows, columns)
+}
 
 // this is for mousedown 'hold to write'
 // document.addEventListener('mouseover', function (e) {
