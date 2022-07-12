@@ -1,7 +1,7 @@
 const containerDiv = document.querySelector('#container');
 // let mouseDown = false; // this is for mousedown 'hold to write'
 
-function makeRows(rows, columns) {
+function makeGrid(rows, columns) {
     containerDiv.style.setProperty('--grid-rows', rows);
     containerDiv.style.setProperty('--grid-columns', columns);
     for (i = 0; i < (rows * columns); i++) {
@@ -13,7 +13,7 @@ function makeRows(rows, columns) {
     }
 }
 
-makeRows(16, 16);
+makeGrid(16, 16);
 
 // this is for mousedown 'hold to write'
 // document.addEventListener('mouseover', function (e) {
