@@ -3,9 +3,10 @@
     --grid-rows: 1;
 }
 
+/* this is for mousedown 'hold to write'
 html {
     user-select: none;
-}
+} */
 
 #container {
     display: grid;
