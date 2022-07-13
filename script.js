@@ -1,13 +1,14 @@
-const containerDiv = document.querySelector('#container');
+const grid = document.querySelector('#grid');
+makeGrid(16, 16);
 // let mouseDown = false; // this is for mousedown 'hold to write'
 
 // creates the grid
 function makeGrid(rows, columns) {
-    containerDiv.style.setProperty('--grid-rows', rows);
-    containerDiv.style.setProperty('--grid-columns', columns);
+    grid.style.setProperty('--grid-rows', rows);
+    grid.style.setProperty('--grid-columns', columns);
     for (i = 0; i < (rows * columns); i++) {
         let square = document.createElement('div');
-        containerDiv.appendChild(square).className = 'grid-item';
+        grid.appendChild(square).className = 'cell';
         square.addEventListener('mouseover', () => {
             square.style.backgroundColor = 'black';
         })
@@ -19,8 +20,8 @@ const resetGridBtn = document.querySelector('#resetGridBtn');
 resetGridBtn.addEventListener('click', () => resetGrid());
 
 function resetGrid() {
-    document.querySelectorAll('.grid-item').forEach(e => e.remove());
-    let userInput = prompt('Please enter the number of grid squares per side (max: 100, it will be a square): ');
+    document.querySelectorAll('.cell').forEach(e => e.remove());
+    let userInput = prompt('Please enter the number of grid squares per side (length x width, max: 100): ');
     if (userInput > 100) {
         alert('ERROR! You specified a grid size larger than the max of 100.');
         return;
