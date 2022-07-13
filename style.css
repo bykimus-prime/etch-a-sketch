@@ -7,14 +7,21 @@
 html {
     user-select: none;
 } */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 #container {
     display: grid;
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-columns), 1fr);
+    height: 600px;
+    width: 600px;
 }
 
 .grid-item {
-    padding: 1em;
     border: 1px solid black;
 }
