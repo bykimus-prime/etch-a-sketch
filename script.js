@@ -1,24 +1,21 @@
 const grid = document.querySelector('#grid');
-makeGrid(16, 16);
+makeGrid(16);
 
-// this is for mousedown 'hold to write'
+// this is for 'hold to write' functionality
 let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
 
 // creates the grid
-function makeGrid(rows, columns) {
-    grid.style.setProperty('--grid-rows', rows);
-    grid.style.setProperty('--grid-columns', columns);
-    for (i = 0; i < (rows * columns); i++) {
+function makeGrid(size) {
+    grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+    for (let i = 0; i < size * size; i++) {
         const square = document.createElement('div');
         square.classList.add('cell');
-        // grid.appendChild(square).className = 'cell';
-        // square.addEventListener('mouseover', () => {
-        //     square.style.backgroundColor = 'black';
-        // })
         square.addEventListener('mouseover', changeColor);
-        square.addEventListener('mouseDown', changeColor);
+        square.addEventListener('mousedown', changeColor);
         grid.appendChild(square);
     }
 }
@@ -40,23 +37,6 @@ function resetGrid() {
         alert('ERROR! You specified a grid size larger than the max of 100.');
         return;
     }
-    rows = userInput;
-    columns = userInput;
-    makeGrid(rows, columns)
+    size = userInput;
+    makeGrid(size);
 }
-
-// this is for mousedown 'hold to write'
-// document.addEventListener('mouseover', function (e) {
-//     if (mouseDown) {
-//         if (e.target.className === 'cell') {
-//             e.target.style.backgroundColor = 'black';
-//         }
-//     }
-// })
-
-// window.addEventListener('mousedown', () => {
-//     mouseDown = true;
-// })
-// window.addEventListener('mouseup', () => {
-//     mouseDown = false;
-// })
