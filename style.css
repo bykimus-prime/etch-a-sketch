@@ -33,8 +33,22 @@ main {
 }
 
 .cell {
-    border: 1px solid black;
+    /* border: 1px solid black; original, created double borders */
     user-select: none; /* this is for mousedown 'hold to write' */
+}
+
+/* these prevent double borders */
+.border-top-left {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.border-right {
+    border-right: 1px solid black;
+}
+
+.border-bottom {
+    border-bottom: 1px solid black;
 }
 
 button {
