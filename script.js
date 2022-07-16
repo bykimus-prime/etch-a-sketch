@@ -48,9 +48,9 @@ resetGridBtn.addEventListener('click', () => resetGrid());
 
 function resetGrid() {
     document.querySelectorAll('.cell').forEach(e => e.remove());
-    let userInput = prompt('Please enter the number of grid squares per side (length x width, max: 40): ');
-    if (userInput > 40) {
-        alert('ERROR! You specified a grid size larger than the max of 40.');
+    let userInput = prompt('Please enter the number of grid squares per side (length x width, max: 60): ');
+    if (userInput > 60) {
+        alert('ERROR! You specified a grid size larger than the max of 60.');
         return;
     }
     size = userInput;
