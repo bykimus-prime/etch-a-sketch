@@ -1,5 +1,21 @@
 const grid = document.querySelector('#grid');
+const defaultColor = 'black';
 makeGrid(16);
+let currentColor = defaultColor;
+
+// button panel
+const defaultColorBtn = document.querySelector('#defaultColorBtn');
+const rainbowBtn = document.querySelector('#rainbowBtn');
+const shadeBtn = document.querySelector('#shadeBtn');
+const eraserBtn = document.querySelector('#eraserBtn');
+const resetGridBtn = document.querySelector('#resetGridBtn');
+
+// button click events
+defaultColorBtn.addEventListener('click', () => resetGrid());
+rainbowBtn.addEventListener('click', () => resetGrid());
+shadeBtn.addEventListener('click', () => resetGrid());
+eraserBtn.addEventListener('click', () => resetGrid());
+resetGridBtn.addEventListener('click', () => resetGrid());
 
 // this is for 'hold to write' functionality
 let mouseDown = false;
@@ -41,11 +57,7 @@ function changeColor (e) {
     e.target.style.backgroundColor = 'black';
 }
 
-// reset button
-const resetGridBtn = document.querySelector('#resetGridBtn');
-
-resetGridBtn.addEventListener('click', () => resetGrid());
-
+// reset grid
 function resetGrid() {
     document.querySelectorAll('.cell').forEach(e => e.remove());
     let userInput = prompt('Please enter the number of grid squares per side (length x width, max: 60): ');
