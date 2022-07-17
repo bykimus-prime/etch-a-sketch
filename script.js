@@ -1,6 +1,6 @@
 const grid = document.getElementById('grid');
 const defaultColor = 'black';
-const defaultMode = 'color'
+const defaultMode = 'color';
 makeGrid(16);
 let currentColor = defaultColor;
 let currentMode = defaultMode;
@@ -17,14 +17,14 @@ function setCurrentMode(newMode) {
 // button panel
 const defaultColorBtn = document.getElementById('defaultColorBtn');
 const rainbowBtn = document.getElementById('rainbowBtn');
-const shadeBtn = document.getElementById('shadeBtn');
+// const shadeBtn = document.getElementById('shadeBtn');
 const eraserBtn = document.getElementById('eraserBtn');
 const resetGridBtn = document.getElementById('resetGridBtn');
 
 // button click events
 defaultColorBtn.addEventListener('click', () => setCurrentMode('color'));
 rainbowBtn.addEventListener('click', () => setCurrentMode('rainbow'));
-shadeBtn.addEventListener('click', () => setCurrentMode('shade'));
+// shadeBtn.addEventListener('click', () => setCurrentMode('shade'));
 eraserBtn.addEventListener('click', () => setCurrentMode('eraser'));
 resetGridBtn.addEventListener('click', () => resetGrid());
 
@@ -73,6 +73,10 @@ function changeColor (e) {
         e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
     } else if (currentMode === 'color') {
         e.target.style.backgroundColor = 'black';
+    // } else if (currentMode === 'shade') {
+    //     e.target.style.backgroundColor = '#707070';
+    //     e.target.count += 1;
+    //     e.target.style.opacity = 0.2 * e.target.count;
     } else if (currentMode === 'eraser') {
         e.target.style.backgroundColor = 'white';
     }
@@ -95,14 +99,18 @@ function activateButton(newMode) {
         rainbowBtn.classList.remove('active')
     } else if (currentMode === 'color') {
         defaultColorBtn.classList.remove('active')
+    // } else if (currentMode === 'shade') {
+    //     shadeBtn.classList.remove('active')
     } else if (currentMode === 'eraser') {
         eraserBtn.classList.remove('active')
-    }
+    } 
 
     if (newMode === 'rainbow') {
         rainbowBtn.classList.add('active')
     } else if (newMode === 'color') {
         defaultColorBtn.classList.add('active')
+    // } else if (newMode === 'shade') {
+    //     shadeBtn.classList.add('active')
     } else if (newMode === 'eraser') {
         eraserBtn.classList.add('active')
     }
