@@ -107,3 +107,7 @@ function activateButton(newMode) {
         eraserBtn.classList.add('active')
     }
 }
+
+window.onload = () => {
+    activateButton(defaultMode);
+}
