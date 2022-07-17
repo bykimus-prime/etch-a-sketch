@@ -51,16 +51,21 @@ main {
     border-bottom: 1px solid black;
 }
 
+#btnPanel{
+    display: flex;
+    gap: 10px;
+}
+
 button {
     background-color: lightblue;
     height: 40px;
-    width: 150px;
-    margin-top: 12px;
+    width: 140px;
     border-radius: 20px;
     border: 1px solid black;
     cursor: pointer;
     font-size: 18px;
     box-shadow: 2px 2px #999;
+    margin-top: 12px;
 }
 
 button:hover {
