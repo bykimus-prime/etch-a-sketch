@@ -1,7 +1,18 @@
 const grid = document.querySelector('#grid');
 const defaultColor = 'black';
+const defaultMode = 'color'
 makeGrid(16);
 let currentColor = defaultColor;
+let currentMode = defaultMode;
+
+function setCurrentColor(newColor) {
+    currentColor = newColor;
+}
+
+function setCurrentMode(newMode) {
+    activateButton(newMode);
+    currentMode = newMode;
+}
 
 // button panel
 const defaultColorBtn = document.querySelector('#defaultColorBtn');
@@ -11,10 +22,10 @@ const eraserBtn = document.querySelector('#eraserBtn');
 const resetGridBtn = document.querySelector('#resetGridBtn');
 
 // button click events
-defaultColorBtn.addEventListener('click', () => resetGrid());
-rainbowBtn.addEventListener('click', () => resetGrid());
-shadeBtn.addEventListener('click', () => resetGrid());
-eraserBtn.addEventListener('click', () => resetGrid());
+defaultColorBtn.addEventListener('click', () => setCurrentMode('black'));
+rainbowBtn.addEventListener('click', () => setCurrentMode('rainbow'));
+shadeBtn.addEventListener('click', () => setCurrentMode('shade'));
+eraserBtn.addEventListener('click', () => setCurrentMode('eraser'));
 resetGridBtn.addEventListener('click', () => resetGrid());
 
 // this is for 'hold to write' functionality
@@ -52,9 +63,19 @@ function makeGrid(size) {
     }
 }
 
+// changes color of paint
 function changeColor (e) {
-    if (e.type === 'mouseover' && !mouseDown) return
-    e.target.style.backgroundColor = 'black';
+    if (e.type === 'mouseover' && !mouseDown) return;
+    if (currentMode === 'rainbow') {
+        const randomR = Math.floor(Math.random() * 256);
+        const randomG = Math.floor(Math.random() * 256);
+        const randomB = Math.floor(Math.random() * 256);
+        e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
+    } else if (currentMode === 'black') {
+        e.target.style.backgroundColor = 'black';
+    } else if (currentMode === 'eraser') {
+        e.target.style.backgroundColor = 'white';
+    }
 }
 
 // reset grid
@@ -67,4 +88,22 @@ function resetGrid() {
     }
     size = userInput;
     makeGrid(size);
+}
+
+function activateButton(newMode) {
+    if (currentMode === 'rainbow') {
+        rainbowBtn.classList.remove('active')
+    } else if (currentMode === 'color') {
+        defaultColorBtn.classList.remove('active')
+    } else if (currentMode === 'eraser') {
+        eraserBtn.classList.remove('active')
+    }
+
+    if (newMode === 'rainbow') {
+        rainbowBtn.classList.add('active')
+    } else if (newMode === 'color') {
+        colorBtn.classList.add('active')
+    } else if (newMode === 'eraser') {
+        eraserBtn.classList.add('active')
+    }
 }
