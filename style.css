@@ -78,6 +78,10 @@ button:active {
     transform: translate(1px, 1px);
 }
 
+button.active {
+    background-color: lightgreen;
+}
+
 footer {
     display: flex;
     align-items: center;
