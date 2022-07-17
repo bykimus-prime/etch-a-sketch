@@ -1,4 +1,4 @@
-const grid = document.querySelector('#grid');
+const grid = document.getElementById('grid');
 const defaultColor = 'black';
 const defaultMode = 'color'
 makeGrid(16);
@@ -15,14 +15,14 @@ function setCurrentMode(newMode) {
 }
 
 // button panel
-const defaultColorBtn = document.querySelector('#defaultColorBtn');
-const rainbowBtn = document.querySelector('#rainbowBtn');
-const shadeBtn = document.querySelector('#shadeBtn');
-const eraserBtn = document.querySelector('#eraserBtn');
-const resetGridBtn = document.querySelector('#resetGridBtn');
+const defaultColorBtn = document.getElementById('defaultColorBtn');
+const rainbowBtn = document.getElementById('rainbowBtn');
+const shadeBtn = document.getElementById('shadeBtn');
+const eraserBtn = document.getElementById('eraserBtn');
+const resetGridBtn = document.getElementById('resetGridBtn');
 
 // button click events
-defaultColorBtn.addEventListener('click', () => setCurrentMode('black'));
+defaultColorBtn.addEventListener('click', () => setCurrentMode('color'));
 rainbowBtn.addEventListener('click', () => setCurrentMode('rainbow'));
 shadeBtn.addEventListener('click', () => setCurrentMode('shade'));
 eraserBtn.addEventListener('click', () => setCurrentMode('eraser'));
@@ -71,7 +71,7 @@ function changeColor (e) {
         const randomG = Math.floor(Math.random() * 256);
         const randomB = Math.floor(Math.random() * 256);
         e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
-    } else if (currentMode === 'black') {
+    } else if (currentMode === 'color') {
         e.target.style.backgroundColor = 'black';
     } else if (currentMode === 'eraser') {
         e.target.style.backgroundColor = 'white';
@@ -102,7 +102,7 @@ function activateButton(newMode) {
     if (newMode === 'rainbow') {
         rainbowBtn.classList.add('active')
     } else if (newMode === 'color') {
-        colorBtn.classList.add('active')
+        defaultColorBtn.classList.add('active')
     } else if (newMode === 'eraser') {
         eraserBtn.classList.add('active')
     }
